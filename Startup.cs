@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using kol2poprawa_ko_s22106.Models;
+using kol2poprawa_ko_s22106.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,8 +31,8 @@ namespace kol2poprawa_ko_s22106
         {
 
             services.AddControllers();
-            services.AddScoped<ITService, TService>();
-            services.AddDbContext<ContextNameContext>(options =>
+            services.AddScoped<ITeamService, TeamService>();
+            services.AddDbContext<TeamDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("Default")));
 
             services.AddSwaggerGen(c =>
